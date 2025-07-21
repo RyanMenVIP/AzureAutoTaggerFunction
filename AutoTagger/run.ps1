@@ -8,6 +8,8 @@ $eventGridEvent | Out-String | Write-Host
 #Import-Module Az.Resources -Force
 #Import-Module SqlServer -Force
 # 3. check the register status
+az account subscription register
+
 $rp = Get-AzResourceProvider -ProviderNamespace 'Microsoft.OperationalInsights'
 $rp.RegistrationState
 
