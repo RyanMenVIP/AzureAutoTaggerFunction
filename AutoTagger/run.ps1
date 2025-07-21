@@ -13,7 +13,7 @@ $eventGridEvent | Out-String | Write-Host
 Register-AzSubscription
 # 4. if the register status（status NotRegistered / Unregistered ），process register
 #if ($rp.RegistrationState -ne 'Registered') {
-   Register-AzResourceProvider -ProviderNamespace Microsoft.OperationalInsights
+Register-AzResourceProvider -ProviderNamespace Microsoft.OperationalInsights
 #}
 
 # 5. wait the register completed（option）
