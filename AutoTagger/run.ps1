@@ -8,8 +8,8 @@ $eventGridEvent | Out-String | Write-Host
 #Import-Module Az.Resources -Force
 #Import-Module SqlServer -Force
 # 3. check the register status
-#$rp = Get-AzResourceProvider -ProviderNamespace 'Microsoft.OperationalInsights'
-#$rp.RegistrationState
+$rp = Get-AzResourceProvider -ProviderNamespace 'Microsoft.OperationalInsights'
+$rp.RegistrationState
 
 # 4. if the register status（status NotRegistered / Unregistered ），process register
 #if ($rp.RegistrationState -ne 'Registered') {
@@ -18,11 +18,11 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.OperationalInsights"
 
 # 5. wait the register completed（option）
 #Write-Host 'wait register complete …'
-#do {
-#    Start-Sleep -Seconds 3
-#    $status = (Get-AzResourceProvider -ProviderNamespace 'Microsoft.OperationalInsights').RegistrationState
- #   Write-Host "current status: $status"
-#} while ($status -ne 'Registered')
+do {
+    Start-Sleep -Seconds 3
+    $status = (Get-AzResourceProvider -ProviderNamespace 'Microsoft.OperationalInsights').RegistrationState
+    Write-Host "current status: $status"
+} while ($status -ne 'Registered')
 
 #Write-Host 'Microsoft.OperationalInsights Resource Provider successful registed！'
 
